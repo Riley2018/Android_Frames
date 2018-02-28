@@ -1,26 +1,54 @@
 package com.riley.qin.android_frames.main.fragment;
 
 
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.riley.qin.android_frames.R;
+import com.riley.qin.android_frames.main.adapter.CommonFragmentAdapter;
 import com.riley.qin.android_frames.main.base.BaseFragment;
 
 /**
  * 常用
  */
-public class CommonFragment extends BaseFragment
-{
+public class CommonFragment extends BaseFragment {
+    private static final String TAG = CommonFragment.class.getSimpleName();
+
+    private ListView mListView;
+    private TextView mTitle;
+    private String[] datas;
+    private CommonFragmentAdapter mAdapter;
 
     @Override
-    protected View initView()
-    {
-        return View.inflate(mContext, R.layout.fragment_common,null);
+    protected View initView() {
+        Log.e(TAG, "CommonFragment初始化...");
+        View view = View.inflate(mContext, R.layout.fragment_common, null);
+        mListView = view.findViewById(R.id.list_view);
+        mTitle = view.findViewById(R.id.tv_title);
+        return view;
     }
 
     @Override
-    protected void initData()
-    {
+    protected void initData() {
         super.initData();
+        mTitle.setText("Riley.Qin's Common Frames");
+        datas = new String[]{"OKHttp", "Glide", "..."};
+        mAdapter = new CommonFragmentAdapter(mContext, datas);
+        mListView.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void initListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(mContext, datas[position], Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
