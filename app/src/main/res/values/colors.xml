@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--base color-->
+    <color name="brown">#b79364</color>
+    <color name="white_half">#f7f7f7</color>
 </resources>

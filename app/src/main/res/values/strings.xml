@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Android_Frames</string>
+    <string name="welcome_android">welcome Riley.Qin android frames</string>
+    <string name="common">常用</string>
+    <string name="third">第三方</string>
+    <string name="custom">自定义</string>
+    <string name="other">其他</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
