@@ -1,15 +1,15 @@
 package com.riley.qin.android_frames.main.fragment;
 
 
+import android.content.Intent;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.riley.qin.android_frames.R;
+import com.riley.qin.android_frames.common.butterknife.ButterknifeActivity;
 import com.riley.qin.android_frames.main.adapter.CommonFragmentAdapter;
 import com.riley.qin.android_frames.main.base.BaseFragment;
 
@@ -37,7 +37,7 @@ public class CommonFragment extends BaseFragment {
     protected void initData() {
         super.initData();
         mTitle.setText("Riley.Qin's Common Frames");
-        datas = new String[]{"OKHttp", "Glide", "..."};
+        datas = new String[]{"Butterknife","OKHttp", "Glide", "..."};
         mAdapter = new CommonFragmentAdapter(mContext, datas);
         mListView.setAdapter(mAdapter);
     }
@@ -47,7 +47,11 @@ public class CommonFragment extends BaseFragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(mContext, datas[position], Toast.LENGTH_SHORT).show();
+                String data = datas[position];
+                if(data.equals("Butterknife")){
+                    Intent intent = new Intent(mContext, ButterknifeActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
